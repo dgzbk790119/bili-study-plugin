@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>学习台</title>
+<link rel="stylesheet" href="/bili-study/style.css">
+<link rel="stylesheet" href="/bili-study/katex/katex.min.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="dot"></span>学习台</div>
+  <button class="btn primary" id="btnAiCatalog"><span data-icon="sparkles"></span><span>AI 建目录</span></button>
+  <button class="btn" id="btnAddSource"><span data-icon="plus"></span><span>粘贴 B 站链接</span></button>
+  <button class="btn" id="btnExport"><span data-icon="download"></span><span>导出笔记</span></button>
+  <div class="spacer"></div>
+  <button class="reward-pill" id="btnRewards" title="学习奖励"><span class="goal-ring" id="goalRing" aria-hidden="true"><svg viewBox="0 0 24 24"><circle class="ring-bg" cx="12" cy="12" r="9"></circle><circle class="ring-fg" cx="12" cy="12" r="9"></circle></svg></span><span data-icon="starFill"></span><span id="points">0</span><small id="streak">连续 0 天</small></button>
+</header>
+
+<div class="layout">
+  <aside class="catalog" id="catalogPane">
+    <div class="pane-head"><span>学科</span><button class="btn ghost small" id="btnAddSubject" title="手动加一个科目"><span data-icon="plus"></span><span>科目</span></button></div>
+    <div id="catalogTree"><div class="empty">还没有目录。点「AI 建目录」或「加科目」开始。</div></div>
+    <div class="pane-head up-head" id="upHead"><span>UP主</span><span class="up-meta"><span id="upCount">0</span><span class="up-caret" id="upCaret">▸</span></span></div>
+    <div id="upList" class="up-collapsed"></div>
+  </aside>
+
+  <main class="content" id="content" aria-busy="true">
+    <div class="skeleton-grid" aria-hidden="true">
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+      <div class="skeleton-card"><div class="sk-thumb"></div><div class="sk-line w80"></div><div class="sk-line w50"></div></div>
+    </div>
+  </main>
+
+  <aside class="side hidden" id="sidePane">
+    <div class="pane" id="notePane">
+      <h3><span class="pane-title"><span data-icon="note"></span><span>笔记</span></span><span class="note-actions"><button class="btn small" id="btnPreview" title="预览公式渲染"><span data-icon="eye"></span><span>预览</span></button><button class="btn small primary" id="btnSaveNote" title="立即保存"><span data-icon="save"></span><span>保存</span></button></span></h3>
+      <div class="formula-bar" id="formulaBar"></div>
+      <textarea class="note" id="noteText" placeholder="记下这一节的重点、疑问、自己的理解……&#10;公式用 $...$ 行内、$$...$$ 独立行，例如 $f(x)=x^2$"></textarea>
+      <div class="note-meta" id="noteHint"></div>
+      <div class="note-preview hidden" id="notePreview"></div>
+    </div>
+    <div class="pane" id="aiPane">
+      <h3><span class="pane-title"><span data-icon="bot"></span><span>概念速查</span></span><span class="hint">面板内直接回答</span></h3>
+      <input class="ai-input" id="aiConcept" placeholder="不懂的概念，例如：什么是导数？">
+      <div class="presets" id="presets"></div>
+      <div class="actions" style="display:flex;justify-content:flex-end">
+        <button class="btn primary" id="btnAsk">问 AI</button>
+      </div>
+      <div class="ai-answer" id="aiAnswer"></div>
+    </div>
+  </aside>
+</div>
+
+<div class="toast" id="toast"></div>
+<div id="modal"></div>
+<div id="ctxmenu" style="display:none"></div>
+<script src="/bili-study/katex/katex.min.js"></script>
+<script src="/bili-study/app.js"></script>
+</body>
+</html>
