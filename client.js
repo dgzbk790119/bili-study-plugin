@@ -1,6 +1,6 @@
-// 学习台 · DeepSeek Harness 插件：浏览器半边
-//   - 侧栏加一个「学习台」入口，主区域是插件页面（/bili-study/，iframe）
-//   - 明暗主题跟随 dsh：把配色 postMessage 给页面（页面见 web/scheme.js）
+// B 站学习台 · DeepSeek Harness 插件：浏览器半边
+//   - 侧栏加一个「B 站学习台」入口，主区域是插件页面（/bili-study/，iframe）
+//   - 明暗主题跟随 dsh：把配色 postMessage 给页面（页面见 web/app.js）
 //   - 页面里点「AI 建目录」「问 AI」：postMessage 一段草稿，这里开一个新对话并把草稿
 //     填进输入框（不直接发送，用户补完再发）
 window.__ModuleLoader__.load({
@@ -53,11 +53,11 @@ window.__ModuleLoader__.load({
           addEventListener('message', onMessage)
           return () => { removeEventListener('message', onMessage); frames.delete(self) }
         }, [])
-        return h('iframe', { ref, src: SRC, title: '学习台', allow: 'fullscreen', onLoad: (e) => post(e.currentTarget), style: { width: '100%', height: '100%', border: 0, display: 'block' } })
+        return h('iframe', { ref, src: SRC, title: 'B 站学习台', allow: 'fullscreen', onLoad: (e) => post(e.currentTarget), style: { width: '100%', height: '100%', border: 0, display: 'block' } })
       }
 
       ctx.slots.inject('sidebar.panellist', () =>
-        ctx.slots.register({ name: 'sidebar.panellist', id: PANEL, order: 7, label: () => '学习台' }, PanelIcon))
+        ctx.slots.register({ name: 'sidebar.panellist', id: PANEL, order: 7, label: () => 'B 站学习台' }, PanelIcon))
       ctx.slots.inject('main', () => ctx.slots.register({ name: 'main', key: PANEL }, StudyPanel))
     }
 

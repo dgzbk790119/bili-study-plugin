@@ -1,5 +1,5 @@
-# 学习台：聚合 B 站学习视频的面板插件。Host 半边提供 B 站抓取、状态持久化和给模型的两个工具；
-# 浏览器半边由 package.json 的 dsh.client 声明加载，侧栏加一个「学习台」入口。
+# B 站学习台：聚合 B 站学习视频的面板插件。Host 半边提供 B 站抓取、状态持久化和给模型的两个工具；
+# 浏览器半边由 package.json 的 dsh.client 声明加载，侧栏加一个「B 站学习台」入口。
 - insert:
     - id: bili-study
       name: 'dsh-bili-study'
