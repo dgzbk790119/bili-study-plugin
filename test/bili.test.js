@@ -77,3 +77,23 @@ test("Bili._sign: 剥离特殊字符 !'()*", () => {
   // 特殊字符已被剥离（quote 后不应再出现这些字符）
   assert.ok(!q.includes("'") && !q.includes('(') && !q.includes(')') && !q.includes('*'))
 })
+
+test('_get: 命中 -352 自动重试并最终成功', async () => {
+  const orig = globalThis.fetch
+  let calls = 0
+  globalThis.fetch = async () => {
+    calls++
+    if (calls < 3) return { json: async () => ({ code: -352, message: '风控' }) }
+    return { json: async () => ({ code: 0, data: { ok: 1 } }) }
+  }
+  const b = new Bili()
+  b.last = 0
+  b._backoff = () => 0 // 退避置 0，避免测试等待
+  try {
+    const r = await b._get('https://api.bilibili.com/x/test')
+    assert.equal(r.code, 0)
+    assert.equal(calls, 3) // 首次 + 两次重试
+  } finally {
+    globalThis.fetch = orig
+  }
+})
