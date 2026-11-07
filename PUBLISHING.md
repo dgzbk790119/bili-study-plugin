@@ -41,7 +41,8 @@ dsh 的一个 profile（`~/.dsh/profiles/<name>/`）由若干**组合包（bundl
 - [x] `files` 覆盖所有运行时文件（`lib/`、`web/`、`locale/`、入口、patch、icon、README、LICENSE）
 - [x] `engines.dsh` 声明兼容范围
 - [x] `license` 与 README（插件详情页默认读 README）
-- [ ] 发布到 npm 或 Git 仓库（需要账号/网络）
+- [x] 发布到 Git 仓库：<https://github.com/ijerrywong/bili-study-plugin>
+- [ ] 发布到 npm（账号已登录，但 npm 要求启用 2FA 或 bypass-2FA token，待处理）
 
 ### 版本兼容
 
@@ -139,3 +140,9 @@ DSH_HOME=/tmp/dsh-bili-test dsh plugin --profile test add ./dsh-bili-study-1.0.0
 - `npm pack` 产物 78 个文件，`node_modules/dsh-bili-study` 内容完整
 - `dsh plugin --profile test add ./dsh-bili-study-1.0.0.tgz` 安装成功，自动写入 profile 的 `dependencies` 与 `dsh.profile.bundles`
 - `dsh --profile test --dump-config` 能组合出 `- id: bili-study` 行，说明 `engines.dsh` 兼容检查通过、`cordis.patch.yml` 被正确加载
+
+GitHub 渠道也已实测：
+
+- `dsh plugin --profile test add git+https://github.com/ijerrywong/bili-study-plugin.git` 安装成功
+- profile 记录为 `"dsh-bili-study": "github:ijerrywong/bili-study-plugin"`
+- `--dump-config` 同样组合出 `bili-study` 行

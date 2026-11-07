@@ -16,7 +16,7 @@
 ### 方式一：在面板里安装
 
 1. 打开侧栏 **插件**，点 **添加插件**。
-2. 输入包名 `dsh-bili-study`（或 Git 地址 / 压缩包 / 本地绝对路径）。
+2. 输入 Git 地址 `git+https://github.com/ijerrywong/bili-study-plugin.git`；npm 包发布后也可以直接填 `dsh-bili-study`。
 3. 点 **安装**，完成后点 **立即启用**。
 4. 若侧栏没有立刻出现入口，刷新页面或重启 DSH。
 
@@ -24,7 +24,10 @@
 
 ```sh
 # profile 名按你的安装来，Desktop 通常是 desktop，Web 通常是 web
-dsh plugin --profile desktop add dsh-bili-study
+dsh plugin --profile desktop add git+https://github.com/ijerrywong/bili-study-plugin.git
+
+# npm 包发布后可用：
+# dsh plugin --profile desktop add dsh-bili-study
 ```
 
 安装后重启 DSH（没有启用 HMR 的 profile 需要重启才加载新组合包）。
