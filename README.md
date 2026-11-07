@@ -32,8 +32,8 @@ dsh plugin --profile desktop add dsh-bili-study
 ### 方式三：从源码链接（开发用）
 
 ```sh
-git clone <仓库地址>
-cd dsh-bili-study
+git clone https://github.com/ijerrywong/bili-study-plugin.git
+cd bili-study-plugin
 dsh plugin --profile desktop add link:$PWD
 ```
 

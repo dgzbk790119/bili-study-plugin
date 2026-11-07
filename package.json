@@ -34,6 +34,14 @@
     "notes"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ijerrywong/bili-study-plugin.git"
+  },
+  "homepage": "https://github.com/ijerrywong/bili-study-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/ijerrywong/bili-study-plugin/issues"
+  },
   "publishConfig": {
     "access": "public"
   },

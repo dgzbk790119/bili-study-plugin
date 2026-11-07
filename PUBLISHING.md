@@ -72,7 +72,7 @@ dsh 启动时会拿**唯一**的运行时版本（当前 Desktop 是 `0.2.2-rc.1
 
 ```sh
 dsh plugin --profile <profile> add dsh-bili-study
-dsh plugin --profile <profile> add git+https://github.com/<user>/dsh-bili-study.git
+dsh plugin --profile <profile> add git+https://github.com/ijerrywong/bili-study-plugin.git
 dsh plugin --profile <profile> add /absolute/path/to/dsh-bili-study
 dsh plugin --profile <profile> add ./dsh-bili-study-1.0.0.tgz
 ```
@@ -97,14 +97,14 @@ npm publish --access public
 ### GitHub / Git URL（不需要 npm 账号）
 
 ```sh
-git remote add origin git@github.com:<user>/dsh-bili-study.git
+git remote add origin git@github.com:ijerrywong/bili-study-plugin.git
 git push -u origin main
 ```
 
 用户安装：
 
 ```sh
-dsh plugin --profile desktop add git+https://github.com/<user>/dsh-bili-study.git
+dsh plugin --profile desktop add git+https://github.com/ijerrywong/bili-study-plugin.git
 ```
 
 dsh 在安装 Git 地址前会做一次 `git ls-remote` 可达性检查；GitHub 不通时会提示改用镜像或换方式。Git 安装不会自动获得 npm 的版本更新提示，升级要卸载重装。
