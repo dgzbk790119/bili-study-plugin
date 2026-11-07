@@ -42,7 +42,7 @@ dsh 的一个 profile（`~/.dsh/profiles/<name>/`）由若干**组合包（bundl
 - [x] `engines.dsh` 声明兼容范围
 - [x] `license` 与 README（插件详情页默认读 README）
 - [x] 发布到 Git 仓库：<https://github.com/ijerrywong/bili-study-plugin>
-- [ ] 发布到 npm（账号已登录，但 npm 要求启用 2FA 或 bypass-2FA token，待处理）
+- [x] 发布到 npm：<https://www.npmjs.com/package/dsh-bili-study>
 
 ### 版本兼容
 
@@ -95,6 +95,8 @@ npm publish --access public
 
 发布后用户直接输入 `dsh-bili-study` 即可。包名目前未被占用（2026-11 查询），但发布前仍应再确认一次。
 
+首次发布会进入 npm 的 **staged publishing**：注册表先返回 `0.0.0-stage` 占位版本，`latest` 也指向它，真正的 `1.0.0` 在后台审核。本包这次约 1 分半后 `latest` 变为 `1.0.0`；审核期间 `npm view dsh-bili-study` 会 404，`pnpm add dsh-bili-study` 可能抓到占位 tarball 并报 `ERR_PNPM_TARBALL_EXTRACT`。遇到这种情况等几分钟，或用 `npm view` 确认 `1.0.0` 已出现后再装；急着安装可显式写 `dsh-bili-study@1.0.0`。
+
 ### GitHub / Git URL（不需要 npm 账号）
 
 ```sh
@@ -146,3 +148,9 @@ GitHub 渠道也已实测：
 - `dsh plugin --profile test add git+https://github.com/ijerrywong/bili-study-plugin.git` 安装成功
 - profile 记录为 `"dsh-bili-study": "github:ijerrywong/bili-study-plugin"`
 - `--dump-config` 同样组合出 `bili-study` 行
+
+npm 渠道已实测（2026-11-07，`dsh-bili-study@1.0.0`）：
+
+- `npm view dsh-bili-study version` → `1.0.0`，`repository.url` 指向本仓库
+- `DSH_HOME=/tmp/dsh-bili-npm3 dsh plugin --profile test add dsh-bili-study@1.0.0` 安装成功
+- profile 记录为 `"dsh-bili-study": "1.0.0"`，`--dump-config` 组合出 `bili-study` 行

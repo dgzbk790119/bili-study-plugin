@@ -13,22 +13,26 @@
 
 要求 DeepSeek Harness **0.2.x**（本插件声明 `engines.dsh: >=0.2.1-rc.5 <0.3.0`）。
 
-### 方式一：在面板里安装
+### 方式一：npm（推荐）
 
-1. 打开侧栏 **插件**，点 **添加插件**。
-2. 输入 Git 地址 `git+https://github.com/ijerrywong/bili-study-plugin.git`；npm 包发布后也可以直接填 `dsh-bili-study`。
-3. 点 **安装**，完成后点 **立即启用**。
-4. 若侧栏没有立刻出现入口，刷新页面或重启 DSH。
+已在 npm 发布：<https://www.npmjs.com/package/dsh-bili-study>
 
-### 方式二：命令行安装
+面板：侧栏 **插件 → 添加插件**，填 `dsh-bili-study`，点 **安装**，完成后点 **立即启用**。
+
+命令行：
 
 ```sh
 # profile 名按你的安装来，Desktop 通常是 desktop，Web 通常是 web
-dsh plugin --profile desktop add git+https://github.com/ijerrywong/bili-study-plugin.git
-
-# npm 包发布后可用：
-# dsh plugin --profile desktop add dsh-bili-study
+dsh plugin --profile desktop add dsh-bili-study
 ```
+
+### 方式二：GitHub（npm 不可用时的备用）
+
+```sh
+dsh plugin --profile desktop add git+https://github.com/ijerrywong/bili-study-plugin.git
+```
+
+或在面板 **添加插件** 里填同一个 Git 地址。
 
 安装后重启 DSH（没有启用 HMR 的 profile 需要重启才加载新组合包）。
 
